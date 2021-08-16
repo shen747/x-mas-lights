@@ -7,8 +7,8 @@
 #define NOISE 10  // Noise/hum/interference in mic signal
 
 #define PEAK_THRESOLD 70 //sensitivity
-#define LED_ON_TIME 150 //100ms
-#define LED_OFF_TIME 150 //100ms
+#define LED_ON_TIME 100 //100ms
+#define LED_OFF_TIME 100 //100ms
 
 int lvl = 0;  // Current "dampened" audio level
 
