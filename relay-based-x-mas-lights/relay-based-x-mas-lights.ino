@@ -6,8 +6,9 @@
 #define DC_OFFSET 0 // DC offset in mic signal - if unusure, leave 0
 #define NOISE 10  // Noise/hum/interference in mic signal
 
-#define PEAK_THRESOLD 100 //sensitivity
-#define LED_ON_TIME 100 //100ms
+#define PEAK_THRESOLD 70 //sensitivity
+#define LED_ON_TIME 150 //100ms
+#define LED_OFF_TIME 150 //100ms
 
 int lvl = 0;  // Current "dampened" audio level
 
@@ -31,13 +32,13 @@ void loop() {
   int n;
   n = analogRead(ANALOG_INPUT);
 
-  //  Serial.println(n);
+//    Serial.println(n);
 
   n = abs(n - MEAN - DC_OFFSET);        // Center on zero
   n = (n <= NOISE) ? 0 : (n - NOISE);  // Remove noise/hum/
   lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
 
-  Serial.println(lvl);
+//  Serial.println(lvl);
 
   if (lvl > PEAK_THRESOLD) { // action
     //based on lvl turn on of LED lights
@@ -62,6 +63,7 @@ void turnPinOnAndOff(int pinNum) {
       delay(LED_ON_TIME);
       digitalWrite(ledPins[pinNum], LOW);
       digitalWrite(ledPins[pinNum] + 3, LOW);
+      delay(LED_OFF_TIME);
       break;
 
     case 1:
@@ -70,6 +72,7 @@ void turnPinOnAndOff(int pinNum) {
       delay(LED_ON_TIME);
       digitalWrite(ledPins[pinNum], LOW);
       digitalWrite(ledPins[pinNum] + 2, LOW);
+      delay(LED_OFF_TIME);
       break;
 
     case 2:
@@ -78,6 +81,7 @@ void turnPinOnAndOff(int pinNum) {
       delay(LED_ON_TIME);
       digitalWrite(ledPins[pinNum], LOW);
       digitalWrite(ledPins[pinNum] + 1, LOW);
+      delay(LED_OFF_TIME);
       break;
 
     case 3:
@@ -86,6 +90,7 @@ void turnPinOnAndOff(int pinNum) {
       delay(LED_ON_TIME);
       digitalWrite(ledPins[pinNum], LOW);
       digitalWrite(ledPins[pinNum] + 0, LOW);
+      delay(LED_OFF_TIME);
       break;
 
   }
