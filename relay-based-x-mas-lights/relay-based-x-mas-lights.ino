@@ -1,7 +1,7 @@
 
 #define PIN_COUNT 8 // the number of pins (i.e. the length of the array)
 
-#define ANALOG_INPUT A7 //MIC audio input reading
+#define ANALOG_INPUT A0 //MIC audio input reading
 #define MEAN 25//512  //Mean value used for centering on Zero
 #define DC_OFFSET 0 // DC offset in mic signal - if unusure, leave 0
 #define NOISE 10  // Noise/hum/interference in mic signal
@@ -11,7 +11,6 @@
 #define LED_OFF_TIME 100 //100ms
 
 int lvl = 0;  // Current "dampened" audio level
-
 
 int ledPins[] = {
   2, 3, 4, 5, 6, 7, 8, 9
@@ -24,7 +23,6 @@ void setup() {
   for (int thisPin = 0; thisPin < PIN_COUNT; thisPin++)  {
     pinMode(ledPins[thisPin], OUTPUT);
   }
-
 }
 
 void loop() {
@@ -32,13 +30,13 @@ void loop() {
   int n;
   n = analogRead(ANALOG_INPUT);
 
-//    Serial.println(n);
+  //    Serial.println(n);
 
   n = abs(n - MEAN - DC_OFFSET);        // Center on zero
   n = (n <= NOISE) ? 0 : (n - NOISE);  // Remove noise/hum/
   lvl = ((lvl * 7) + n) >> 3;    // "Dampened" reading (else looks twitchy)
 
-//  Serial.println(lvl);
+  Serial.println(lvl);
 
   if (lvl > PEAK_THRESOLD) { // action
     //based on lvl turn on of LED lights
