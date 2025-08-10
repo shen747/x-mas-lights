@@ -102,6 +102,10 @@ This project demonstrates how simple, elegant engineering can solve real-world p
 
 This hobby project showcases the power of **creative problem-solving** and **practical engineering**. By combining simple hardware with intelligent software, it delivers a professional-grade lighting experience at a fraction of the cost and complexity of commercial alternatives.
 
+Have a look at my other arduino projects below:
+1. **<a href="https://github.com/shen747/arduino-alcohol-senor" target="_blank">Arduino Based Alcohol Sensor</a>**.
+2. **<a href="https://github.com/shen747/sound-sensitive-leds" target="_blank">Arduino Based Sound Controlled LEDs</a>**.
+
 **Perfect for**: Makers, Arduino enthusiasts, holiday decorators, and anyone who loves combining technology with creativity!
 
 ---
